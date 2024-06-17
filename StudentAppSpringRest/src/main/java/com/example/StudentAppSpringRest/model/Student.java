@@ -1,4 +1,4 @@
-package model;
+package com.example.StudentAppSpringRest.model;
 
 import jakarta.persistence.*;
 

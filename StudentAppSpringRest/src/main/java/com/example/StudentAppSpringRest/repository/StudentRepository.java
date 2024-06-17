@@ -1,6 +1,6 @@
-package repository;
+package com.example.StudentAppSpringRest.repository;
 
-import model.Student;
+import com.example.StudentAppSpringRest.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {

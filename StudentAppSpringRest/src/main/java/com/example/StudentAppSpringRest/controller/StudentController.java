@@ -1,8 +1,8 @@
-package controller;
+package com.example.StudentAppSpringRest.controller;
 
-import model.Student;
+import com.example.StudentAppSpringRest.model.Student;
+import com.example.StudentAppSpringRest.service.StudentService;
 import org.springframework.web.bind.annotation.*;
-import service.StudentService;
 
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class StudentController {
     }
 
     @DeleteMapping("/student/{id}")
-    public String deleteStudent(@PathVariable("id") int id) {
-        Student student = studentService.findById(id);
+    public String deleteStudent(@PathVariable int id) {
+        Student student = studentService.findStudentById(id);
 
         if (student == null) {
             throw new RuntimeException("The course with the id: " + id + " was not found.");
@@ -40,7 +40,7 @@ public class StudentController {
 
     @GetMapping("/student/{id}")
     public Student findStudent(@PathVariable int id) {
-        Student student = studentService.findById(id);
+        Student student = studentService.findStudentById(id);
 
         if (student == null) {
             throw new RuntimeException("The student with the id: " + id + " was not found.");
@@ -49,8 +49,8 @@ public class StudentController {
         return student;
     }
 
-    @GetMapping("/students")
-    public List<Student> findAll() {
+    @GetMapping("/student")
+    public List<Student> findAllStudents() {
         return studentService.findAllStudents();
     }
 }

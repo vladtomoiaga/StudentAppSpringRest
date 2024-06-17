@@ -1,9 +1,9 @@
-package service;
+package com.example.StudentAppSpringRest.service;
 
-import model.Course;
+import com.example.StudentAppSpringRest.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.CourseRepository;
+import com.example.StudentAppSpringRest.repository.CourseRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +25,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course updateCourse(Course course) {
-        return null;
+        return courseRepository.save(course);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course findById(int id) {
+    public Course findCourseById(int id) {
         Optional<Course> courseId = courseRepository.findById(id);
 
         if (courseId.isPresent()) {

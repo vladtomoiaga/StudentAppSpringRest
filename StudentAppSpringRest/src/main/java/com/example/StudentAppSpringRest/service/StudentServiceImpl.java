@@ -1,11 +1,13 @@
-package service;
+package com.example.StudentAppSpringRest.service;
 
-import model.Student;
-import repository.StudentRepository;
+import com.example.StudentAppSpringRest.model.Student;
+import com.example.StudentAppSpringRest.repository.StudentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
     private StudentRepository studentRepository;
@@ -30,7 +32,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findById(int id) {
+    public Student findStudentById(int id) {
         Optional<Student> studentId = studentRepository.findById(id);
 
         if (studentId.isPresent()) {
