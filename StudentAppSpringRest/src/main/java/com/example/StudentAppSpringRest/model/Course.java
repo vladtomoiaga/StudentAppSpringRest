@@ -11,7 +11,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcourse")
-    private int idCourse;
+    private Integer idCourse;
 
     @Column(name = "course_name")
     private String courseName;
@@ -20,7 +20,7 @@ public class Course {
     private String courseOwner;
 
     @Column(name = "course_room")
-    private int courseRoom;
+    private Integer courseRoom;
 
     @OneToMany(mappedBy = "favoriteCourse",
             fetch = FetchType.EAGER,
