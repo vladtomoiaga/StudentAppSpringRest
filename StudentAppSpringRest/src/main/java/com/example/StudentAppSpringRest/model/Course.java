@@ -1,8 +1,8 @@
 package com.example.StudentAppSpringRest.model;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "course")
@@ -11,7 +11,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcourse")
-    private Integer idCourse;
+    private int idCourse;
 
     @Column(name = "course_name")
     private String courseName;
@@ -20,12 +20,12 @@ public class Course {
     private String courseOwner;
 
     @Column(name = "course_room")
-    private Integer courseRoom;
+    private int courseRoom;
 
     @OneToMany(mappedBy = "favoriteCourse",
-            fetch = FetchType.EAGER,
+            fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Student> students = new ArrayList<>();
+    private Set<Student> students = new HashSet<>();
 
     public Course() {
     }
@@ -62,12 +62,13 @@ public class Course {
         this.courseRoom = courseRoom;
     }
 
-    public List<Student> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setStudents(Set<Student> students) {
+        this.students.clear();
+        this.students.addAll(students);
     }
 
     @Override
